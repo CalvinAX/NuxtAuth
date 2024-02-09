@@ -9,6 +9,8 @@
         </div>
         <NuxtLink to="/login">Login</NuxtLink>
         <NuxtLink to="/">Home</NuxtLink>
+        <br />
+        <button @click="signOut()">Sign out</button>
     </div>
 </template>
 
@@ -17,7 +19,7 @@
         middleware: 'auth',
     })
 
-    const { status, data } = useAuth();
+    const { status, data, signOut } = useAuth();
 </script>
 
 <style lang="scss">

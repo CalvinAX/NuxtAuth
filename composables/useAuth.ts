@@ -26,6 +26,9 @@ export const useAuth = () => {
                 loggedIn: 'authenticated',
                 custom: testUser.custom,
             }));
+            let redirectTo = redirect || '/';
+
+            navigateTo(redirectTo);
         }
     }
 
@@ -41,7 +44,7 @@ export const useAuth = () => {
         const auth = useState('auth');
         if (auth.value == undefined) {
             if (cookie.value !== undefined) {
-                if (testUser.id == (cookie.value as unknown)) {
+                if (testUser.id == (cookie.value as unknown as number)) {
                     const authState = useState('auth', () => ({
                         user: {
                             id: testUser.id,
@@ -69,10 +72,26 @@ export const useAuth = () => {
      */
     const data = useAuthData();
 
+    /**
+     * Function to log a user out
+     * Auth state is emptied and cookie is removed
+     * @param {string} redirect
+     * @returns {void}
+     */
+    const signOut = (redirect?: string) => {
+        let auth = useState('auth');
+        auth.value = undefined;
+        let cookie = useCookie('auth');
+        cookie.value = undefined;
+
+        let redirectPath = redirect || '/';
+        navigateTo(redirectPath);
+    }
 
     // Return statement to make all auth functions available to the component
     return {
         signIn,
+        signOut,
         status,
         data,
         cookieSignIn,
