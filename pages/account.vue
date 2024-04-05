@@ -20,6 +20,9 @@
     })
 
     const { status, data, signOut } = useAuth();
+
+    await useAuthBuilder('test', 'test');
+    await useAuthBuilder('test2', 'test2');
 </script>
 
 <style lang="scss">

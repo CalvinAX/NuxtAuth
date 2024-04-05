@@ -5,5 +5,5 @@ export type UserObject = {
         password: string,
     },
     loggedIn: string,
-    custom: string,
+    custom: {},
 }

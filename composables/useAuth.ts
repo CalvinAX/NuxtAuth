@@ -5,7 +5,6 @@ export const useAuth = () => {
         id: 1,
         email: 'admin@email.com',
         password: 'admin',
-        custom: 'custom data here',
     }
 
     /**
@@ -24,8 +23,9 @@ export const useAuth = () => {
                     password: testUser.password,
                 },
                 loggedIn: 'authenticated',
-                custom: testUser.custom,
+                custom: {}
             }));
+
             let redirectTo = redirect || '/';
 
             navigateTo(redirectTo);
@@ -52,7 +52,7 @@ export const useAuth = () => {
                             password: testUser.password,
                         },
                         loggedIn: 'authenticated',
-                        custom: testUser.custom,
+                        custom: {}
                     }));
                 }
 

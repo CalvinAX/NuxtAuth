@@ -21,7 +21,6 @@
     const { signIn, status, data } = useAuth();
 
     async function login() {
-        console.log(save.value);
         await signIn(email.value, password.value);
         if (save.value == 'on') {
             const cookie = useCookie('auth', {
